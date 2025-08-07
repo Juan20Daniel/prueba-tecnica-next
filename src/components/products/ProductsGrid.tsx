@@ -1,0 +1,20 @@
+import React from 'react';
+import { ProductGridItem } from './productGridItem/ProductGridItem';
+import type { Product } from '@/interfaces/products.interface';
+
+interface Props {
+    products: Product[];
+}
+
+export const ProductsGrid = ({products}:Props) => {
+    return (
+        <div className='w-full max-w-6xl grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 mb-20'>
+            {products.map(product => (
+                <ProductGridItem 
+                    key={product.id} 
+                    product={product}    
+                />
+            ))}
+        </div>
+    );
+}

@@ -1,7 +1,7 @@
 [
     [
         { "id": 1, "img":"1473809-00-A_1_2000.jpg", "name": "Producto 1", "price": 60 },
-        { "id": 2, "img":"1473809-00-A_alt.jpg", "name": "Producto 2", "price": 100 },
+        { "id": 2, "img":"1473809-00-A_1_2000.jpg", "name": "Producto 2", "price": 100 },
         { "id": 3, "img":"1473814-00-A_1_2000.jpg", "name": "Producto 3", "price": 120 },
         { "id": 4, "img":"1473809-00-A_1_2000.jpg", "name": "Producto 4", "price": 70 },
         { "id": 5, "img":"1473824-00-A_2_2000.jpg", "name": "Producto 1", "price": 60 },
