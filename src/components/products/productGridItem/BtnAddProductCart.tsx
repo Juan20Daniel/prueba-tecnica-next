@@ -1,21 +1,18 @@
 'use client';
 import { useAddProductCartApi } from '@/hooks/useAddProductCartApi';
-import { useGetCartApi } from '@/hooks/useGetCartApi';
 import { useStoreAlert } from '@/store/useStoreAlert';
-import { useEffect } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 import { IoCartOutline } from 'react-icons/io5';
 
 interface Props {
     idProduct: number;
+    setIsAdded: Dispatch<SetStateAction<boolean>>;
 }
 
-export const BtnAddProductCart = ({idProduct}:Props) => {
+export const BtnAddProductCart = ({idProduct, setIsAdded}:Props) => {
     const { addProductCartApi, isLoading:isAdding, error:errorAdding } = useAddProductCartApi();
     const { openAlert } = useStoreAlert();
-    const { getCartApi } = useGetCartApi();
-    useEffect(() => {
-        if(!isAdding && !errorAdding) getCartApi();
-    },[isAdding]);
+    
     useEffect(() => {
         if(errorAdding) {
             openAlert({
@@ -25,10 +22,12 @@ export const BtnAddProductCart = ({idProduct}:Props) => {
                 otherMessage: 'Intentalo mas tarde.'
             });
         }
-    },[errorAdding])
-    const addProductCart = () => {
+    },[errorAdding]);
+    const addProductCart = async () => {
         if(isAdding) return;
-        addProductCartApi(idProduct);
+        const result = await addProductCartApi(idProduct);
+        if(result) return setIsAdded(true);
+        setIsAdded(false);
     }
     return (
         <div className="absolute bottom-1 left-0 w-full h-[30px] z-1 flex justify-center md:h-[35px] md:bottom-[-2px]">

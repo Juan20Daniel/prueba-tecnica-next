@@ -1,14 +1,14 @@
 import { create } from "zustand";
 
 interface InitialState {
-    totalProductsInCart: number;
+    cart: number[];
 
-    getTotalProductsInCart:(total:number) => void;
+    getProductsInCart:(total:[]) => void;
 }
 
 export const useStoreCart = create<InitialState>()((set) => ({
-    totalProductsInCart:0,
-    getTotalProductsInCart: (total:number) => {
-        set({totalProductsInCart:total});
+    cart:[],
+    getProductsInCart: (total:number[]) => {
+        set({cart:total});
     }
 }));

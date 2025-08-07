@@ -6,14 +6,15 @@ export const useGetCartApi = () => {
     const [ cart, setCart ] = useState<number[]>([]);
     const [ isLoading, setIsLoading ] = useState(true);
     const [ error, setError ] = useState(false);
-    const { getTotalProductsInCart } = useStoreCart();
+    const { getProductsInCart } = useStoreCart();
    
     const getCartApi = async () => {
         try {
             setIsLoading(true);
-            const response = await fetch('/api/cart')
+            const response = await fetch('/api/cart');
             const {data} = await response.json();
-            getTotalProductsInCart(data.length);
+            console.log(data);
+            getProductsInCart(data);
             setError(false);
             setCart(data);
         } catch (error) {

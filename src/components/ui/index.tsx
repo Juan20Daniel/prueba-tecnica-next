@@ -5,3 +5,4 @@ export { Title } from "./title/Title";
 export { Loading } from "./loader/Loading";
 export { Error } from "./error/Error";
 export { PageNotFound } from './pageNotFound/PageNotFound';
+export { NotData } from './notData/NotData';
