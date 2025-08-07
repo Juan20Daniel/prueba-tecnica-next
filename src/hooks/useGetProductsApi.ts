@@ -12,7 +12,7 @@ export const useGetProductsApi = () => {
     const getProductsApi = async () => {
         try {
             setIsLoading(true);
-            const response = await fetch('http://localhost:3000/api/products')
+            const response = await fetch('/api/products')
             const {data} = await response.json() as ProductResponseAPI;
             setError(false);
             setProducts(data);

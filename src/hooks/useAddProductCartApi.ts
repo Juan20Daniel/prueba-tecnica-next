@@ -8,14 +8,14 @@ export const useAddProductCartApi = () => {
     const addProductCartApi = async (idProduct:number) => {
         try {
             setIsLoading(true);
-            await fetch('http://localhost:3000/api/cart', {
+            await fetch('/api/cart', {
                 method:'POST',
                 body:JSON.stringify({idProduct}),
                 headers: {
                     "Content-Type":"application/json"
                 }
             });
-            setError(true);
+            setError(false);
         } catch (error) {
             console.log(error);
             setError(true);
