@@ -1,4 +1,7 @@
 import { NextResponse } from 'next/server';
+import path from 'path';
+import fs from 'fs';
+import type { Product } from '@/interfaces/products.interface';
 var cart:number[] = [];
 
 const productAdded = (idProduct:number) => {
@@ -6,9 +9,22 @@ const productAdded = (idProduct:number) => {
 }
 
 export async function GET(request: Request) { 
+  const filePath = path.join(process.cwd(), 'data.json');
+  const fileContent = fs.readFileSync(filePath, 'utf8');
+  const json:Product[] = JSON.parse(fileContent);
+  
+  let productsInCart:Product[] = [];
+  cart.forEach(idProduct => {
+    const result = json.find(product => {
+      return idProduct === product.id;
+    });
+    if(result) {
+      productsInCart.push(result);
+    }
+  });
   return NextResponse.json({
     message: 'Productos en el carrito', 
-    data:cart
+    data:productsInCart
   });
 }
 
@@ -24,7 +40,6 @@ export async function POST(request: Request) {
   }
 
   cart.push(idProduct);
-
   return NextResponse.json({message:`Producto: ${idProduct} agregado al carrito`}, {status:200});
 }
 

@@ -1,14 +1,18 @@
+import { Product } from "@/interfaces/products.interface";
 import { create } from "zustand";
 
 interface InitialState {
-    cart: number[];
-
+    cart: Product[];
+    productsIds: number[];
     getProductsInCart:(total:[]) => void;
 }
 
 export const useStoreCart = create<InitialState>()((set) => ({
     cart:[],
-    getProductsInCart: (total:number[]) => {
-        set({cart:total});
+    productsIds:[],
+    getProductsInCart: (productsInCart:Product[]) => {
+        const ids = productsInCart.map(product => product.id);
+        set({cart:productsInCart, productsIds:ids});
+
     }
 }));

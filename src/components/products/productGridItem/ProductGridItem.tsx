@@ -10,11 +10,11 @@ interface Props {
 }
 
 export const ProductGridItem = ({product, showMarker=true}:Props) => {
-    const cart = useStoreCart(state => state.cart);
+    const productsIds = useStoreCart(state => state.productsIds);
     return (
         <div className="overflow-hidden">
             <div className="relative w-full aspect-square rounded-2xl px-2 py-4">
-                {(showMarker && cart.includes(product.id)) && 
+                {(showMarker && productsIds.includes(product.id)) && 
                     <div className="absolute bg-blue-600 px-2 py-1 rounded-2xl top-1 right-10 flex items-center justify-center z-1 md:px-3 md:top-0">
                         <span className="text-white select-none text-[10px] md:text-[13px]">Agregado</span>
                     </div>
@@ -27,7 +27,7 @@ export const ProductGridItem = ({product, showMarker=true}:Props) => {
                     className="rounded-2xl shadow-sm"
                     priority
                 />
-                {!cart.includes(product.id) &&
+                {!productsIds.includes(product.id) &&
                     <BtnAddProductCart idProduct={product.id} />
                 }
             </div>
