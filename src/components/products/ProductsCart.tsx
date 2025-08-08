@@ -17,12 +17,12 @@ export const ProductsCart = () => {
                         <Link href='/' className="py-2 px-6 rounded-2xl bg-black text-white transition-all active:bg-gray-700">Ir</Link>
                     </NotData>   
                 :   <>
-                        <div className='full h-[50px]' />
-                        <div style={{position:'sticky', top:0}} className='h-[100px] px-4 flex items-end justify-center z-2 backdrop-blur-xs sm:top-[0px]'>
+                        <div className='fixed w-[calc(100vw-15px)] h-[100px] top-[60px] px-4 flex items-end justify-center z-2 backdrop-blur-xs'>
                             <div className='w-full max-w-6xl flex flex-col items-start pb-4'>
                                 <Title value='Todos los productos del carrito' />
                             </div>
                         </div>
+                        <div className="w-full h-[120px]" />
                         <div className='w-auto flex justify-center pt-2 mx-4'>
                             <ProductsGrid 
                                 products={cart} 

@@ -7,12 +7,13 @@ export default function Home() {
       <Navbar>
         <CartLink />
       </Navbar>
-        <div style={{position:'sticky', top:0}} className='mt-[60px] h-[180px] px-4 flex items-end justify-center z-2 backdrop-blur-xs'>
+        <div className='fixed w-[calc(100vw-15px)] mr-5 top-[60px] h-[160px] px-4 flex items-end justify-center z-2 backdrop-blur-xs'>
           <div className='w-full max-w-6xl flex flex-col items-start pb-2'>
             <Title value='Todos los productos' />
             <FilterProducts />
           </div>
         </div>
+      <div className="w-full h-[180px]" />
       <Products />
     </div>
   );
