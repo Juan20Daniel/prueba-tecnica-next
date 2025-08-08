@@ -13,7 +13,6 @@ export const useGetProductsApi = () => {
 
     useLayoutEffect(() => {
         getProductsApi();
-        getCartApi();
     },[]);
     const getProductsApi = async () => {
         try {
@@ -33,6 +32,7 @@ export const useGetProductsApi = () => {
             console.log(error);
             setError(true);
         } finally {
+            getCartApi();
             setIsLoading(false);
         }
     } 
