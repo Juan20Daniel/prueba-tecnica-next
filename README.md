@@ -1,12 +1,14 @@
 ## Iniciar la aplicación
 
 1.- instalar dependencias
+
 ejecuta el siguiente comando
 ```bash
 npm install o npm i
 ```
 
 ## Inicia la aplicación 
+
 ejecuta el siguiente comando
 ```bash
 npm run dev
