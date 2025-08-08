@@ -45,7 +45,10 @@ export const ProductsCart = () => {
                                 </div>
                             </div>
                             <div className='w-auto flex justify-center pt-2 mx-4'>
-                                <ProductsGrid products={productsInCart} />
+                                <ProductsGrid 
+                                    products={productsInCart} 
+                                    showMarker={false}
+                                />
                             </div>
                         </>
             }

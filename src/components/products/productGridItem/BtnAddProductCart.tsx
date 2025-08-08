@@ -6,10 +6,9 @@ import { IoCartOutline } from 'react-icons/io5';
 
 interface Props {
     idProduct: number;
-    setIsAdded: Dispatch<SetStateAction<boolean>>;
 }
 
-export const BtnAddProductCart = ({idProduct, setIsAdded}:Props) => {
+export const BtnAddProductCart = ({idProduct}:Props) => {
     const { addProductCartApi, isLoading:isAdding, error:errorAdding } = useAddProductCartApi();
     const { openAlert } = useStoreAlert();
     
@@ -25,9 +24,7 @@ export const BtnAddProductCart = ({idProduct, setIsAdded}:Props) => {
     },[errorAdding]);
     const addProductCart = async () => {
         if(isAdding) return;
-        const result = await addProductCartApi(idProduct);
-        if(result) return setIsAdded(true);
-        setIsAdded(false);
+        await addProductCartApi(idProduct);
     }
     return (
         <div className="absolute bottom-1 left-0 w-full h-[30px] z-1 flex justify-center md:h-[35px] md:bottom-[-2px]">

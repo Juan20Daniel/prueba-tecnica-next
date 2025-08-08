@@ -7,21 +7,15 @@ import { useStoreCart } from "@/store/useStoreCart";
 
 interface Props {
     product: Product;
+    showMarker?: boolean;
 }
 
-export const ProductGridItem = ({product}:Props) => {
-    const [ isAdded, setIsAdded ] = useState(false);
+export const ProductGridItem = ({product, showMarker=true}:Props) => {
     const cart = useStoreCart(state => state.cart);
-    
-    // useEffect(() => {
-    //     if(cart.includes(product.id)) {
-    //         setIsAdded(true);
-    //     }
-    // },[]);
     return (
         <div className="overflow-hidden">
             <div className="relative w-full aspect-square rounded-2xl px-2 py-4">
-                {cart.includes(product.id) && 
+                {(showMarker && cart.includes(product.id)) && 
                     <div className="absolute bg-blue-600 px-2 py-1 rounded-2xl top-1 right-10 flex items-center justify-center z-1 md:px-3 md:top-0">
                         <span className="text-white select-none text-[10px] md:text-[13px]">Agregado</span>
                     </div>
@@ -35,10 +29,7 @@ export const ProductGridItem = ({product}:Props) => {
                     priority
                 />
                 {!cart.includes(product.id) &&
-                    <BtnAddProductCart 
-                        idProduct={product.id} 
-                        setIsAdded={setIsAdded}
-                    />
+                    <BtnAddProductCart idProduct={product.id} />
                 }
             </div>
             <div className="flex gap-3 justify-center mb-8 mt-5 md:gap-10">

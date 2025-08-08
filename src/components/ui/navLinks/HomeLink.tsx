@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { IoCartOutline, IoHomeOutline } from 'react-icons/io5';
+import { IoHomeOutline } from 'react-icons/io5';
 
 export const HomeLink = () => {
     return (
