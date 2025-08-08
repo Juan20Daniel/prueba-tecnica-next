@@ -1,6 +1,8 @@
 ## Requisitos
 Node.js versión 18.18 o superior
 
+Pasos para correr la app
+
 ## 1.- Clonar el repositorio
 
 Ejecuta el siguiente comando en git
