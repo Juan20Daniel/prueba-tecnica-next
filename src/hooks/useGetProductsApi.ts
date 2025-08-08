@@ -1,28 +1,28 @@
 'use client'; 
 import { useLayoutEffect, useState } from 'react';
 import { Product, ProductResponseAPI } from '../interfaces/products.interface';
-import { useGetCartApi } from './useGetCartApi';
 import { useStoreProducts } from '@/store/useStoreProducts';
 import { fetchApi } from '@/helpers/fetch';
+import { useStoreCart } from '@/store/useStoreCart';
 export const useGetProductsApi = () => {
     const [ products, setProducts ] = useState<Product[]>([]);
     const [ isLoading, setIsLoading ] = useState(true);
     const [ error, setError ] = useState(false);
     const { getProduct } = useStoreProducts();
-    const { getCartApi } = useGetCartApi();
-
+    const { getProductsInCart } = useStoreCart();
     useLayoutEffect(() => {
         getProductsApi();
     },[]);
     const getProductsApi = async () => {
         try {
+            getProductsInCart([]);
             setIsLoading(true);
-            const productsPromis = fetchApi({url:'/api/products'});
-            const removeProductsPromis = fetchApi({url:'/api/cart', method:'DELETE'});
+            const productsPromise = fetchApi({url:'/api/products'});
+            const removeProductsPromise = fetchApi({url:'/api/cart', method:'DELETE'});
 
             const responses = await Promise.all([
-                productsPromis,
-                removeProductsPromis
+                productsPromise,
+                removeProductsPromise
             ]);
             const {data} = await responses[0].json() as ProductResponseAPI;
             setError(false);
@@ -32,7 +32,6 @@ export const useGetProductsApi = () => {
             console.log(error);
             setError(true);
         } finally {
-            getCartApi();
             setIsLoading(false);
         }
     } 
