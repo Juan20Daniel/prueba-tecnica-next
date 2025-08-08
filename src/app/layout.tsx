@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Alert } from "@/components/ui";
+import { FilteredResultsModal } from "@/components/products";
 
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`antialiased overflow-hidden`}>
         <Alert />
+        <FilteredResultsModal />
         {children}
       </body>
     </html>

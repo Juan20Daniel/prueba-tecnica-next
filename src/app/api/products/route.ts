@@ -6,5 +6,5 @@ export async function GET(request: Request) {
     const filePath = path.join(process.cwd(), 'data.json');
     const fileContent = fs.readFileSync(filePath, 'utf8');
     const json = JSON.parse(fileContent);
-    return NextResponse.json({message:'obtener todos los productos', data:json[0]}, {status:200});
+    return NextResponse.json({message:'obtener todos los productos', data:json}, {status:200});
 }
