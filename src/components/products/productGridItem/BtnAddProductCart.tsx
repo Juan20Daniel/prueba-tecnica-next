@@ -1,7 +1,7 @@
 'use client';
+import { useEffect } from 'react';
 import { useAddProductCartApi } from '@/hooks/useAddProductCartApi';
 import { useStoreAlert } from '@/store/useStoreAlert';
-import { Dispatch, SetStateAction, useEffect } from 'react';
 import { IoCartOutline } from 'react-icons/io5';
 
 interface Props {

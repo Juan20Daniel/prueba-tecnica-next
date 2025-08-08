@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { cart } from '../../../../lib/memory';
+var cart:number[] = [];
 
 const productAdded = (idProduct:number) => {
   return cart.find(id => id === idProduct);
@@ -27,3 +27,9 @@ export async function POST(request: Request) {
 
   return NextResponse.json({message:`Producto: ${idProduct} agregado al carrito`}, {status:200});
 }
+
+export async function DELETE(request: Request) {
+  cart = [];
+  return NextResponse.json({message:`Se limpió el carrito`}, {status:200});
+}
+

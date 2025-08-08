@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 import Link from 'next/link';
 import { useStoreCart } from '@/store/useStoreCart';
 import { IoCartOutline } from 'react-icons/io5';

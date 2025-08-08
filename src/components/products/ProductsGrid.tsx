@@ -9,7 +9,7 @@ interface Props {
 
 export const ProductsGrid = ({products, showMarker=true}:Props) => {
     return (
-        <div className='w-full max-w-6xl grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 mb-20'>
+        <div className='w-full max-w-6xl grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 mb-10'>
             {products.map(product => (
                 <ProductGridItem 
                     key={product.id} 

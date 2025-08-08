@@ -1,29 +1,21 @@
 'use client'; 
 import { useStoreCart } from '@/store/useStoreCart';
-import { useState } from 'react';
+import { fetchApi } from '../helpers/fetch';
 
 export const useGetCartApi = () => {
-    const [ cart, setCart ] = useState<number[]>([]);
-    const [ isLoading, setIsLoading ] = useState(true);
-    const [ error, setError ] = useState(false);
     const { getProductsInCart } = useStoreCart();
-   
-    const getCartApi = async () => {
+  
+    const getCartApi = async ():Promise<boolean> => {
         try {
-            setIsLoading(true);
-            const response = await fetch('/api/cart');
-            const {data} = await response.json();
-            console.log(data);
+            const response = await fetchApi({url:'/api/cart'});
+            const {data} = await response.json();   
             getProductsInCart(data);
-            setError(false);
-            setCart(data);
+            return true;
         } catch (error) {
             console.log(error);
-            setError(true);
-        } finally {
-            setIsLoading(false);
+            throw new Error('Error al obtener los productos del carrito.')
         }
     } 
 
-    return {cart, isLoading, error, getCartApi}
+    return {getCartApi}
 }

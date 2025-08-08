@@ -1,9 +1,8 @@
 'use client';
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import { BtnAddProductCart } from "./BtnAddProductCart";
-import type { Product } from "@/interfaces/products.interface";
 import { useStoreCart } from "@/store/useStoreCart";
+import type { Product } from "@/interfaces/products.interface";
 
 interface Props {
     product: Product;

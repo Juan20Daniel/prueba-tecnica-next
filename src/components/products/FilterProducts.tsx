@@ -1,10 +1,10 @@
 'use client';
 import React, { useState } from 'react';
-import { Product } from '@/interfaces/products.interface';
 import { useStoreAlert } from '@/store/useStoreAlert';
 import { useStoreProducts } from '@/store/useStoreProducts';
 import { useStorageResultFilter } from '@/store/useStorageResultFilter';
 import { IoClose } from 'react-icons/io5';
+import type { Product } from '@/interfaces/products.interface';
 
 export const FilterProducts = () => {
     const [ budget, setBudget ] = useState('');

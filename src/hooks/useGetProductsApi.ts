@@ -1,10 +1,9 @@
 'use client'; 
 import { useLayoutEffect, useState } from 'react';
 import { Product, ProductResponseAPI } from '../interfaces/products.interface';
-import { useStoreCart } from '@/store/useStoreCart';
 import { useGetCartApi } from './useGetCartApi';
 import { useStoreProducts } from '@/store/useStoreProducts';
-
+import { fetchApi } from '@/helpers/fetch';
 export const useGetProductsApi = () => {
     const [ products, setProducts ] = useState<Product[]>([]);
     const [ isLoading, setIsLoading ] = useState(true);
@@ -19,8 +18,14 @@ export const useGetProductsApi = () => {
     const getProductsApi = async () => {
         try {
             setIsLoading(true);
-            const response = await fetch('/api/products')
-            const {data} = await response.json() as ProductResponseAPI;
+            const productsPromis = fetchApi({url:'/api/products'});
+            const removeProductsPromis = fetchApi({url:'/api/cart', method:'DELETE'});
+
+            const responses = await Promise.all([
+                productsPromis,
+                removeProductsPromis
+            ]);
+            const {data} = await responses[0].json() as ProductResponseAPI;
             setError(false);
             setProducts(data);
             getProduct(data);

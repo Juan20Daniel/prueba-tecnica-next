@@ -1,11 +1,11 @@
 'use client';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import { ProductsGrid } from './ProductsGrid';
+import { useEffect, useState } from 'react';
 import { useStoreCart } from '@/store/useStoreCart';
 import { useStoreProducts } from '@/store/useStoreProducts';
-import { Product } from '@/interfaces/products.interface';
+import { ProductsGrid } from './ProductsGrid';
 import { Loading, NotData, Title } from '../ui';
+import type { Product } from '@/interfaces/products.interface';
 
 export const ProductsCart = () => {
     const [ isLoading, setIsLoading ] = useState(true);
