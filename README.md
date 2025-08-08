@@ -1,15 +1,23 @@
-## Iniciar la aplicación
+## Requisitos
+Node.js versión 18.18 o superior
 
-1.- instalar dependencias
+## 1.- Clonar el repositorio
 
-ejecuta el siguiente comando
+Ejecuta el siguiente comando en git
+```bash
+git clone https://github.com/Juan20Daniel/prueba-tecnica-next.git 
+```
+
+## 2.- Preparar la aplicación
+
+Ejecuta uno de los siguientes comando para instalar dependencias
 ```bash
 npm install o npm i
 ```
 
-## Inicia la aplicación 
+## 3.- Inicia la aplicación 
 
-ejecuta el siguiente comando
+Ejecuta el siguiente comando y listo.
 ```bash
 npm run dev
 ```
