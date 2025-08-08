@@ -14,7 +14,7 @@ export const Alert = () => {
                     {otherMessage &&
                         <p className='font-medium text-[12px] md:text-[14px]'>{otherMessage}</p>
                     }
-                    <div className='flex justify-end'>
+                    <div className='flex justify-end pt-3'>
                         <button
                             className='px-7 py-1 bg-blue-700 text-white rounded-2xl cursor-pointer transition-all active:bg-blue-500'
                             onClick={closeAlert}

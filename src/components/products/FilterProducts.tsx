@@ -121,9 +121,13 @@ export const FilterProducts = () => {
                         type='number'
                         value={budget}
                         onChange={(e) => setBudget(e.target.value)}
+                        required
                     />
                     {budget !== '' && 
-                        <button onClick={() => setBudget('')} className='cursor-pointer' type='button'>
+                        <button onClick={() => {
+                            setBudget('');
+                            setInputError('normal');
+                        }} className='cursor-pointer' type='button'>
                             <IoClose className='w-[16px] h-[16px] p-[2px] bg-gray-500 rounded-2xl transition-all active:bg-gray-300' color='white'/>
                         </button>
                     }

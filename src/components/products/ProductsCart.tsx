@@ -18,7 +18,7 @@ export const ProductsCart = () => {
                     </NotData>   
                 :   <>
                         <div className='full h-[50px]' />
-                        <div className='sticky top-0 h-[100px] px-4 flex items-end justify-center z-2 backdrop-blur-xs sm:top-[0px]'>
+                        <div style={{position:'sticky', top:0}} className='h-[100px] px-4 flex items-end justify-center z-2 backdrop-blur-xs sm:top-[0px]'>
                             <div className='w-full max-w-6xl flex flex-col items-start pb-4'>
                                 <Title value='Todos los productos del carrito' />
                             </div>
